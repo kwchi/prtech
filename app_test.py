@@ -49,4 +49,9 @@ class TestNotes(unittest.TestCase):
         self.note.searchnote("Відсутня нотатка")
 
 if __name__ == "__main__":
+    import xmlrunner
+    with open('test_result.xml', 'wb') as output:
+        runner = xmlrunner.XMLTestRunner(output='test-reposts')
+        unittest.main(testRunner=runner)
+
     unittest.main()
