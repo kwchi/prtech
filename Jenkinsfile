@@ -24,7 +24,7 @@ pipeline {
                 sh 'apk add --update python3 py-pip'
                 sh 'python3 -m venv venv'
                 sh '. venv/bin/activate'
-                sh 'apk add py3-unittest-xml-reporting'
+                sh 'pip install pytest pytest-cov'
                 sh 'python3 app_test.py'
             }
             post {
