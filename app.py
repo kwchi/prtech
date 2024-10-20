@@ -1,28 +1,9 @@
-class Notes:
-    def __init__ (self):
-        self.stack = []
+from flask import Flask
+app = Flask(__name__)
 
-    def addnote (self, note):
-        if not isinstance(note, str) or not note.strip():
-            raise ValueError("Нотатка порожня")
-        self.stack.append(note)
+@app.route('/')
+def hello_world():
+    return 'Hello world from app! It is Pipeline testing.'
 
-    def is_empty (self):
-        return len(self.stack) == 0
-
-    def removenote (self):
-        if self.is_empty():
-            raise IndexError("Нотатки немає")
-        return self.stack.pop()
-        
-    def viewnote (self):
-        if self.is_empty():
-            raise IndexError("Нотатки немає")
-        return self.stack[-1]
-    
-    def searchnote (self, text):
-        found_notes = [note for note in self.stack if text in note]
-        if not found_notes:
-            raise ValueError("Нотатка не знайдена")
-        return found_notes
-    
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')

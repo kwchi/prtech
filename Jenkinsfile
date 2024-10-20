@@ -16,26 +16,22 @@ pipeline {
             }
         }
         stage('Test'){
-            agent {
-                docker {
-                    image 'python:3.12'
-                    args '-u root'
+            agent{docker {image 'alpine'
+                    args '-u=\"root"'
                 }
-            }  
+            }
             steps {
-                sh 'pip install --upgrade pip'
-                sh 'pip install --no-cache-dir virtualenv'
-                sh 'virtualenv venv'
-                sh 'venv/bin/pip install --no-cache-dir pytest pytest-cov xmlrunner'
-                sh 'venv/bin/python app_test.py'
-    }
-
+                sh 'apk add --update python3 py-pip'
+                sh 'pip install Flask'
+                sh 'pip install xmlrunner'
+                sh 'python3 app_test.py'
+            }
             post {
                 always {
-                    junit '**/test_result.xml'
+                    junit 'test-reports/*.xml'
                 }
                 success{
-                    echo "Application testing successfully completed"
+                    echo "Application tsting succssfully completed"
                 }
                 failure{
                     echo "Oooppss!!! Tests failed!"
