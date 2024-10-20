@@ -25,7 +25,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'test_results.xml'
+                    junit '**/test_result.xml'
                 }
                 success{
                     echo "Application testing successfully completed"
