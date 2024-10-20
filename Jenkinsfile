@@ -23,9 +23,9 @@ pipeline {
                 }
             }  
             steps {
-                sh 'pip install --no-cache-dir pytest pytest-cov'
+                sh 'pip install --no-cache-dir virtualenv'
                 sh 'python -m venv venv'
-                sh 'venv/bin/python -m pip install pytest pytest-cov'  
+                sh 'venv/bin/pip install --no-cache-dir pytest pytest-cov'  
                 sh 'venv/bin/python app_test.py' 
             }
             post {
