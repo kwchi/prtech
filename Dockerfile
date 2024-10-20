@@ -1,4 +1,6 @@
 FROM jenkins/jenkins:lts
+FROM python:3.12
+RUN apt-get update && apt-get install -y python3-venv
 USER root
 RUN apt-get update && apt-get install -y apt-transport-https \
        ca-certificates curl gnupg2 \
