@@ -23,11 +23,13 @@ pipeline {
                 }
             }  
             steps {
+                sh 'pip install --upgrade pip'
                 sh 'pip install --no-cache-dir virtualenv'
-                sh 'python -m venv venv'
-                sh 'venv/bin/pip install --no-cache-dir pytest pytest-cov'  
-                sh 'venv/bin/python app_test.py' 
-            }
+                sh 'virtualenv venv'
+                sh 'venv/bin/pip install --no-cache-dir pytest pytest-cov'
+                sh 'venv/bin/python app_test.py'
+    }
+
             post {
                 always {
                     junit '**/test_result.xml'
