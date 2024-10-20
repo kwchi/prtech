@@ -1,5 +1,5 @@
 import unittest
-from notes import Notes
+from app import Notes
 
 class TestNotes(unittest.TestCase):
      
