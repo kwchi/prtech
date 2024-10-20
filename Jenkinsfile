@@ -26,7 +26,7 @@ pipeline {
                 sh 'pip install --upgrade pip'
                 sh 'pip install --no-cache-dir virtualenv'
                 sh 'virtualenv venv'
-                sh 'venv/bin/pip install --no-cache-dir pytest pytest-cov'
+                sh 'venv/bin/pip install --no-cache-dir pytest pytest-cov xmlrunner'
                 sh 'venv/bin/python app_test.py'
     }
 
