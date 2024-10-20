@@ -24,7 +24,6 @@ pipeline {
                 sh 'apk add --update python3 py-pip'
                 sh 'python3 -m venv venv'
                 sh '. venv/bin/activate'
-                sh 'pip install xmlrunner'
                 sh 'python3 app_test.py'
             }
             post {
