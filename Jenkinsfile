@@ -16,16 +16,12 @@ pipeline {
             }
         }
         stage('Test'){
-            agent{docker {image 'alpine'
-                args '-u="root"'
-                }
-            }
+            agent { docker { image 'python:3.12' } }  
             steps {
-                sh 'apk add --update python3 py-pip'
-                sh 'python3 -m venv venv'
-                sh '. venv/bin/activate'
                 sh 'pip install pytest pytest-cov'
-                sh 'python3 app_test.py'
+                sh 'python -m venv venv'
+                sh 'venv/bin/python -m pip install pytest pytest-cov'  
+                sh 'venv/bin/python app_test.py' 
             }
             post {
                 always {
