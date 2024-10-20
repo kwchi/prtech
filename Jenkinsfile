@@ -16,9 +16,9 @@ pipeline {
             }
         }
         stage('Test'){
-            agent { docker { image 'python:3.12' inside'-u root' } }  
+            agent { docker { image 'python:3.12' args '-u root' } }  
             steps {
-                sh 'pip install pytest pytest-cov'
+                sh 'pip install --no-cache-dir pytest pytest-cov'
                 sh 'python -m venv venv'
                 sh 'venv/bin/python -m pip install pytest pytest-cov'  
                 sh 'venv/bin/python app_test.py' 
