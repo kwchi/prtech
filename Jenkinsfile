@@ -4,7 +4,7 @@ pipeline {
     agent none
     triggers {
         cron('H 0 * * *') 
-        pollSCM('H 20 * * * *')
+        pollSCM('H 20 * * * ')
     }
     stages {
         stage('Check scm') {
